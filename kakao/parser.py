@@ -115,8 +115,12 @@ def parse_csv(csv_path: str):
                 users[current_user]['out'] = False
                 users[current_user]['blocked'] = False
         if current_message.endswith('님이 나갔습니다.'):
-            if current_user in users:
-                users[current_user]['out'] = True
+            if current_user not in users:
+                users[current_user] = {
+                    'out': True,
+                    'messages': [],
+                }
+            users[current_user]['out'] = True
         if df.User[i] in ADMIN_USERS and current_message.endswith('님을 내보냈습니다.'):
             kicked_user = current_message[:len(current_message) - len('님을 내보냈습니다.')]
             if kicked_user in users:

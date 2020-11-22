@@ -29,6 +29,10 @@ def test_get_code5():
     assert get_code('가하멘...10686eea') == '10686eea'
 
 
+def test_get_code6():
+    assert get_code("Ffst(3b45a1a)") is None
+
+
 def test_remove_korean1():
     assert remove_korean('염재호.(37228270)') == '.(37228270)'
     assert remove_korean('바쁜벌꿀d536a608') == 'd536a608'
